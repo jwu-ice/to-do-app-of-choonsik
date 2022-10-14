@@ -18,11 +18,22 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "import", "@typescript-eslint"],
   "rules": {
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "warn",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/order": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": false
+      }
+    ]
   }
 }
