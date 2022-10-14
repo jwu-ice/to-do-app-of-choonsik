@@ -1,9 +1,10 @@
-import Test from "@/components/Test"
-
 function App() {
   return (
-    <div className="">
-      <Test />
+    <div>
+      <div className="h-screen bg-no-repeat bg-cover bg-choonsik-bg">
+        {/* <img className="bg-center bg-no-repeat bg-cover bg-choonsik-title" alt="title"></img> */}
+        {/* <div className="h-12 bg-checkbox-1"></div> */}
+      </div>
     </div>
   )
 }
