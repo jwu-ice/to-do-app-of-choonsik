@@ -6,28 +6,32 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        ...repeatObject("checkbox-", "checkBox", TODO_ITEMS_COUNT, "assets/", "png"),
+        ...repeatObject({
+          utilityName: "checkbox-",
+          imageName: "checkBox",
+          repeatNumber: TODO_ITEMS_COUNT,
+        }),
         "choonsik-bg": "url('assets/choonsik-bg.png')",
-        "choonsik-title": "url('assets/choonsik-title.png')",
+      },
+      backgroundSize: {
+        16: "4rem",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 }
 
-function repeatObject(
+function repeatObject({
   utilityName,
   imageName,
   repeatNumber = 1,
   path = "assets/",
   extension = "png",
-) {
+}) {
   const object = [...Array(repeatNumber)].reduce((prev, _, i) => {
     prev[`${utilityName}${i + 1}`] = `url(${path}${imageName}${i + 1}.${extension})`
     return prev
   }, {})
-
-  console.log("object", object)
 
   return object
 }
