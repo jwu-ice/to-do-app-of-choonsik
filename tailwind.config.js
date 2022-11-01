@@ -1,4 +1,5 @@
-let TODO_ITEMS_COUNT = 8
+const { TODO_ITEMS_COUNT } = require("./src/settings")
+const { repeatObject } = require("./src/utils")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
         ...repeatObject({
           utilityName: "checkbox-",
           imageName: "checkBox",
-          repeatNumber: TODO_ITEMS_COUNT,
+          repeat: TODO_ITEMS_COUNT,
         }),
         "choonsik-bg": "url('assets/choonsik-bg.png')",
       },
@@ -19,19 +20,4 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
-}
-
-function repeatObject({
-  utilityName,
-  imageName,
-  repeatNumber = 1,
-  path = "assets/",
-  extension = "png",
-}) {
-  const object = [...Array(repeatNumber)].reduce((prev, _, i) => {
-    prev[`${utilityName}${i + 1}`] = `url(${path}${imageName}${i + 1}.${extension})`
-    return prev
-  }, {})
-
-  return object
 }
