@@ -7,6 +7,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
+    "prettier",
     "plugin:prettier/recommended",
     "plugin:react/jsx-runtime"
   ],
@@ -18,12 +19,14 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "import", "@typescript-eslint"],
+  "plugins": ["react", "import", "@typescript-eslint", "prettier"],
   "rules": {
+    "react/jsx-first-prop-new-line": [2, "multiline"],
+    "react/jsx-max-props-per-line": [2, { "maximum": 1, "when": "multiline" }],
+    "react/jsx-indent-props": [2, 2],
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "warn",
-    "prettier/prettier": "error",
     "import/order": "error",
     "sort-imports": [
       "error",
