@@ -1,5 +1,6 @@
 import 춘식이타이틀 from "@/assets/choonsik-title.png"
 import 세팅상자 from "@/assets/settingBox.png"
+import TodoList from "@/components/TodoList"
 
 function App() {
   return (
@@ -9,24 +10,21 @@ function App() {
     >
       <div id="메인제목" className="flex items-center justify-end py-3">
         <div className="w-[429px] h-[88px] ">
-          <img className="object-cover object-center" src={춘식이타이틀} alt={춘식이타이틀} />
+          <img
+            className="object-cover object-center"
+            src={춘식이타이틀}
+            alt={춘식이타이틀}
+          />
         </div>
         <button className="">
-          <img className="object-cover object-center" src={세팅상자} alt={세팅상자} />
+          <img
+            className="object-cover object-center"
+            src={세팅상자}
+            alt={세팅상자}
+          />
         </button>
       </div>
-      <div id="투두리스트" className="grid grid-cols-1 bg-blue-400">
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-        <div>d</div>
-      </div>
+      <TodoList />
     </div>
   )
 }

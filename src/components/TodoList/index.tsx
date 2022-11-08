@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react"
 import useFetch from "@/hooks/useFetch"
 import TodoItem, { TodoItemType } from "@/components/TodoItem"
-import LocalStore from "@/components/utils/localStore"
-import { betweenRandomNumber } from "@/components/utils/number"
+import LocalStore from "@/utils/localStore"
+import { betweenRandomNumber } from "@/utils/number"
 
 type todoJSONType = { id: number; text: string; isCheck: boolean; date: string }
 
