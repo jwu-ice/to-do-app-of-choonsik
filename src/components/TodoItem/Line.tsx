@@ -1,19 +1,13 @@
-import { TodoItemType } from "@/components/TodoItem"
+import { memo } from "react"
+import { betweenRandomNumber } from "@/utils/number"
 
-const Line = (props: Pick<TodoItemType, "lineImg">) => {
-  const { lineImg } = props
-
-  console.log("lineImg :>> ", lineImg)
-
+const Line = () => {
+  const randomLineName = `bg-line-${betweenRandomNumber(1, 8)}`
   return (
     <div className="w-full h-4">
-      {lineImg ? (
-        <div className={`${lineImg} w-full h-full bg-cover bg-line`} />
-      ) : (
-        "없어"
-      )}
+      {<div className={`${randomLineName} w-full h-full bg-contain `} />}
     </div>
   )
 }
 
-export default Line
+export default memo(Line)
