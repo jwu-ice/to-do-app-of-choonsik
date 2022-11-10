@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-family: "Gamja Flower", cursive;
+  }
+
   body {
-    @apply h-screen bg-gray-100;
+    @apply h-screen bg-teal-100;
+    @apply text-lg font-bold;
   }
 }

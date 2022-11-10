@@ -4,13 +4,21 @@ const { repeatObject } = require("./src/utils/repeatObject")
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  safelist: [{ pattern: /bg-(checkbox|line)-\d+/ }],
+  safelist: [
+    { pattern: /bg-(checkbox|line)-\d+/ },
+    { pattern: /bg-(checkbox)-checked-\d+/ },
+  ],
   theme: {
     extend: {
       backgroundImage: {
         ...repeatObject({
           className: "checkbox-",
           imageName: "checkBox",
+          repeat: TODO_ITEMS_COUNT,
+        }),
+        ...repeatObject({
+          className: "checkbox-checked-",
+          imageName: "checkBox_checked",
           repeat: TODO_ITEMS_COUNT,
         }),
         ...repeatObject({
