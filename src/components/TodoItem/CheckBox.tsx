@@ -2,7 +2,6 @@ import { memo, useCallback, useMemo } from "react"
 import { betweenRandomNumber } from "@/utils/number"
 import { todoJSONType } from "@/components/TodoList"
 import useLocalStorage from "@/hooks/useLocalStore"
-import { todoListState } from "@/store"
 
 const CheckBox = (props: Pick<todoJSONType, "id">) => {
   const { id } = props

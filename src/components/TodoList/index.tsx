@@ -1,6 +1,5 @@
 import { useRecoilState, useRecoilValue } from "recoil"
 import TodoItem from "@/components/TodoItem"
-import useLocalStorage from "@/hooks/useLocalStore"
 import { todoListState } from "@/store"
 
 export type todoJSONType = {
