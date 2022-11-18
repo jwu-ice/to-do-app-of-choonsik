@@ -1,6 +1,7 @@
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilValue } from "recoil"
+import { ReactNode } from "react"
 import TodoItem from "@/components/TodoItem"
-import { todoListState } from "@/store"
+import { atomTodoList } from "@/store/atoms"
 
 export type todoJSONType = {
   id: number
@@ -10,13 +11,26 @@ export type todoJSONType = {
 }
 
 const TodoList = () => {
-  const todoList = useRecoilValue(todoListState)
+  const todoList = useRecoilValue(atomTodoList)
+  console.log("todoList :>> ", todoList)
 
   return (
     <div id="투두리스트" className="grid grid-cols-1">
-      {todoList?.reduceRight((prev: todoJSONType[], todo: todoJSONType) => {
-        return [...prev, <TodoItem key={todo.id} {...todo} />]
-      }, [])}
+      {todoList.length ? (
+        todoList.reduceRight((prev: ReactNode[], todo: todoJSONType, index) => {
+          return [
+            ...prev,
+            <TodoItem
+              key={todo.id}
+              index={index}
+              todo={todo}
+              todos={todoList}
+            />,
+          ]
+        }, [])
+      ) : (
+        <div>todo 작성하세요</div>
+      )}
     </div>
   )
 }
