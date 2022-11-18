@@ -28,6 +28,7 @@
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "warn",
+
     "import/order": "error",
     "sort-imports": [
       "error",
