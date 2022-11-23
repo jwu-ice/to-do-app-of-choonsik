@@ -12,7 +12,6 @@ export type todoJSONType = {
 
 const TodoList = () => {
   const todoList = useRecoilValue(atomTodoList)
-  console.log("todoList :>> ", todoList)
 
   return (
     <div id="투두리스트" className="grid grid-cols-1">

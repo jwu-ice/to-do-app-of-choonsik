@@ -1,4 +1,11 @@
-import { DefaultValue, atom, selector, selectorFamily } from "recoil"
+import {
+  DefaultValue,
+  atom,
+  atomFamily,
+  selector,
+  selectorFamily,
+} from "recoil"
+import { useRecoilValue } from "recoil"
 import { todoJSONType } from "@/components/TodoList"
 
 type LocalStorageKey = "todos"
@@ -8,11 +15,7 @@ const localStorageEffect =
   ({ setSelf, onSet }: any) => {
     const savedValue = localStorage.getItem(key)
 
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue))
-    } else {
-      setSelf([])
-    }
+    savedValue != null ? setSelf(JSON.parse(savedValue)) : setSelf([])
 
     onSet((newValue: any, oldValue: any, isReset: boolean) => {
       isReset
@@ -20,6 +23,16 @@ const localStorageEffect =
         : localStorage.setItem(key, JSON.stringify(newValue))
     })
   }
+
+export const atomFamilyTodo = atomFamily<todoJSONType, number>({
+  key: "atomFamilyTodo",
+  default: (params) => ({
+    id: params,
+    text: "",
+    isCheck: false,
+    date: `${new Date().toLocaleDateString("kr")}`,
+  }),
+})
 
 export const atomTodoList = atom<todoJSONType[]>({
   key: "atomTodoList",

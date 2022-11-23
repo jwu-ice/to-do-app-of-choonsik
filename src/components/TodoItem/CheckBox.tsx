@@ -23,6 +23,8 @@ const CheckBox = (props: {
     </div>
   )
 }
-export default memo(CheckBox, (prev, next) => {
-  return prev.isCheck === next.isCheck
-})
+// export default memo(CheckBox, (prev, next) => {
+//   return prev.isCheck === next.isCheck
+// })
+
+export default CheckBox

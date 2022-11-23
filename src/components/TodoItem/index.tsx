@@ -1,10 +1,18 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
-import { ChangeEvent, memo, useCallback, useMemo, useTransition } from "react"
+import {
+  ChangeEvent,
+  memo,
+  useCallback,
+  useMemo,
+  useRef,
+  useTransition,
+} from "react"
 import CheckBox from "@/components/TodoItem/CheckBox"
 import Line from "@/components/TodoItem/Line"
 import TextInput from "@/components/TodoItem/TextInput"
 import { todoJSONType } from "@/components/TodoList"
-import { atomTodoList } from "@/store/atoms"
+import { atomFamilyTodo, atomTodoList } from "@/store/atoms"
+import LocalStore from "@/utils/localStore"
 
 const TodoItem = (props: {
   todo: todoJSONType
@@ -16,9 +24,9 @@ const TodoItem = (props: {
     todo: { isCheck, text },
   } = props
 
-  console.log(todo)
-
   const setTodos = useSetRecoilState(atomTodoList)
+
+  const [localTodo, setLocalTodo] = useRecoilState(atomFamilyTodo(todo.id))
 
   const maxId = useMemo(
     () => Math.max(...todos.map(({ id }) => id)),
@@ -53,7 +61,12 @@ const TodoItem = (props: {
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     const targetText = e.target.value
-    setTodos(getTextedTodos(targetText ?? ""))
+
+    setTimeout(() => {
+      if (targetText === e.target.value) {
+        setTodos(getTextedTodos(targetText ?? ""))
+      }
+    }, 300)
   }
 
   return (
@@ -67,13 +80,16 @@ const TodoItem = (props: {
   )
 }
 
-export default memo(TodoItem, (prev, next) => {
-  const { todo: prevTodo } = prev
-  const { todo: nextTodo } = next
+// export default memo(TodoItem, (prev, next) => {
+//   const { todo: prevTodo } = prev
+//   const { todo: nextTodo } = next
 
-  return (
-    prev.index === next.index &&
-    prevTodo.text === nextTodo.text &&
-    prevTodo.isCheck === nextTodo.isCheck
-  )
-})
+//   const memoResult =
+//     prev.index === next.index &&
+//     prevTodo.text === nextTodo.text &&
+//     prevTodo.isCheck === nextTodo.isCheck
+
+//   return memoResult
+// })
+
+export default TodoItem
