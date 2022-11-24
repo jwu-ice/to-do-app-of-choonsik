@@ -72,7 +72,7 @@ const TodoItem = (props: {
   return (
     <div className="flex gap-2 p-2">
       <CheckBox isCheck={isCheck} handleToggleCheck={handleToggleCheck} />
-      <div className="w-full">
+      <div className="flex flex-col w-full">
         <TextInput text={text} handleTextChange={handleTextChange} />
         <Line />
       </div>

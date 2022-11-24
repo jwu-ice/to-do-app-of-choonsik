@@ -14,7 +14,7 @@ const TodoList = () => {
   const todoList = useRecoilValue(atomTodoList)
 
   return (
-    <div id="투두리스트" className="grid grid-cols-1">
+    <div id="투두리스트" className="grid grid-cols-1 gap-3">
       {todoList.length ? (
         todoList.reduceRight((prev: ReactNode[], todo: todoJSONType, index) => {
           return [

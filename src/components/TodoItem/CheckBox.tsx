@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react"
+import { KeyboardEvent, KeyboardEventHandler, memo, useMemo } from "react"
 import { betweenRandomNumber } from "@/utils/number"
 
 const CheckBox = (props: {
@@ -16,11 +16,17 @@ const CheckBox = (props: {
     : `bg-checkbox-${randomNumber}`
 
   return (
-    <div className="h-10 w-11" onClick={handleToggleCheck}>
+    <button
+      className="h-10 w-11 focus:ring-blue-400 focus:rounded-xl focus:ring-4 focus:outline-none"
+      onClick={handleToggleCheck}
+      tabIndex={0}
+      role="checkbox"
+      aria-checked={isCheck}
+    >
       <div
-        className={`${checkboxStatus} w-full h-full bg-cover cursor-pointer hover:opacity-70 `}
+        className={`${checkboxStatus} w-full h-full bg-cover cursor-pointer hover:opacity-70`}
       />
-    </div>
+    </button>
   )
 }
 // export default memo(CheckBox, (prev, next) => {
