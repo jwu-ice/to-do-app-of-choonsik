@@ -1,15 +1,10 @@
-import {
-  DefaultValue,
-  atom,
-  atomFamily,
-  selector,
-  selectorFamily,
-} from "recoil"
-import { useRecoilValue } from "recoil"
+import { atom, atomFamily } from "recoil"
 import { todoJSONType } from "@/components/TodoList"
+import LocalStore from "@/utils/localStore"
 
 type LocalStorageKey = "todos"
 
+// side effect
 const localStorageEffect =
   (key: LocalStorageKey) =>
   ({ setSelf, onSet }: any) => {
@@ -24,35 +19,26 @@ const localStorageEffect =
     })
   }
 
-export const atomFamilyTodo = atomFamily<todoJSONType, number>({
-  key: "atomFamilyTodo",
-  default: (params) => ({
-    id: params,
-    text: "",
-    isCheck: false,
-    date: `${new Date().toLocaleDateString("kr")}`,
-  }),
-})
-
+// atom
 export const atomTodoList = atom<todoJSONType[]>({
   key: "atomTodoList",
   default: [],
   effects: [localStorageEffect("todos")],
 })
 
-// export const selectorTodoList = selectorFamily({
-//   key: "selectorTodoList",
-//   get:
-//     (todo: todoJSONType) =>
-//     ({ get }) => {
-//       const { id } = todo
+export const atomFamilyTodo = atomFamily<todoJSONType, number>({
+  key: "atomFamilyTodo",
+  default: (id) => {
+    return {
+      id: id,
+      text: "",
+      isCheck: false,
+      date: `${new Date().toLocaleString("ko")}`,
+    } as todoJSONType
+  },
+})
 
-//       return { todos, index, maxId }
-//     },
-//   set:
-//     () =>
-//     ({ set }, newState: any) =>
-//       set(atomTodoList, newState),
-// })
-
-// Create, Update, Delete, Filter..?
+export const atomTodoIds = atom<number[]>({
+  key: "atomTodoIds",
+  default: [],
+})

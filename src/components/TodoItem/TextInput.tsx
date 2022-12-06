@@ -2,13 +2,13 @@ import { ChangeEvent, useRef } from "react"
 
 const TextInput = (props: {
   text: string
-  handleTextChange: (e: any) => void
+  handleChangeText: (e: any) => void
 }) => {
-  const { text, handleTextChange } = props
+  const { text, handleChangeText } = props
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChangeHeight = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    handleTextChange(e)
+    handleChangeText(e)
     e.currentTarget.style.height = "auto"
     e.currentTarget.style.height = textareaRef.current?.scrollHeight + "px"
   }
