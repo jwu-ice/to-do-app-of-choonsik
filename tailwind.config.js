@@ -7,6 +7,9 @@ module.exports = {
   safelist: [
     { pattern: /bg-(checkbox|line)-\d+/ },
     { pattern: /bg-(checkbox)-checked-\d+/ },
+    // FIXME asdasdas 왜 JIT 모드 h-[120px]같은건 적용이 안될까?
+    // 위에는 왜 되는거지
+    // { pattern: /h-\[\d+px\]/ },
   ],
   theme: {
     extend: {
