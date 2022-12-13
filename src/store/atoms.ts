@@ -1,30 +1,21 @@
 import { atom, atomFamily } from "recoil"
 import { todoJSONType } from "@/components/TodoList"
-import LocalStore from "@/utils/localStore"
 
-type LocalStorageKey = "todos"
-
-// side effect
-const localStorageEffect =
-  (key: LocalStorageKey) =>
+// atomTodo
+const atomFamilyTodoEffect =
+  (key: string, id: number) =>
   ({ setSelf, onSet }: any) => {
-    const savedValue = localStorage.getItem(key)
-
-    savedValue != null ? setSelf(JSON.parse(savedValue)) : setSelf([])
+    const savedValue = localStorage.getItem(key + String(id))
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue))
+    }
 
     onSet((newValue: any, oldValue: any, isReset: boolean) => {
       isReset
         ? localStorage.removeItem(key)
-        : localStorage.setItem(key, JSON.stringify(newValue))
+        : localStorage.setItem(key + String(id), JSON.stringify(newValue))
     })
   }
-
-// atom
-export const atomTodoList = atom<todoJSONType[]>({
-  key: "atomTodoList",
-  default: [],
-  effects: [localStorageEffect("todos")],
-})
 
 export const atomFamilyTodo = atomFamily<todoJSONType, number>({
   key: "atomFamilyTodo",
@@ -36,9 +27,38 @@ export const atomFamilyTodo = atomFamily<todoJSONType, number>({
       date: `${new Date().toLocaleString("ko")}`,
     } as todoJSONType
   },
+  effects: (id) => [atomFamilyTodoEffect("todo-", id)],
 })
+
+// export const atomTodoIds = atom<number[]>({
+//   key: "atomTodoIds",
+//   default: [1, 2, 5, 8, 4],
+// })
+
+// atomIds
+const atomTodoIdsEffect =
+  (key: string) =>
+  ({ setSelf, onSet }: any) => {
+    const savedValue = localStorage.getItem(key)
+
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue))
+    }
+
+    onSet((newValue: any, oldValue: any, isReset: boolean) => {
+      isReset
+        ? localStorage.removeItem(key)
+        : localStorage.setItem(key, JSON.stringify(newValue))
+    })
+  }
 
 export const atomTodoIds = atom<number[]>({
   key: "atomTodoIds",
   default: [],
+  effects: [atomTodoIdsEffect("todo-ids")],
+})
+
+export const atomTodoIsAvailable = atom<boolean>({
+  key: "atomTodoIsAvailable",
+  default: true,
 })

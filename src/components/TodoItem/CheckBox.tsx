@@ -1,11 +1,17 @@
-import { KeyboardEvent, KeyboardEventHandler, memo, useMemo } from "react"
+import { useMemo } from "react"
+import { useRecoilSnapshot, useRecoilState, useRecoilValue } from "recoil"
 import { betweenRandomNumber } from "@/utils/number"
+import { atomFamilyTodo, atomTodoIsAvailable } from "@/store/atoms"
 
-const CheckBox = (props: {
-  isCheck: boolean
-  handleToggleCheck: () => void
-}) => {
-  const { isCheck, handleToggleCheck } = props
+const CheckBox = ({ id }: { id: number }) => {
+  const [todo, setTodo] = useRecoilState(atomFamilyTodo(id))
+  const isAvailable =
+    useRecoilSnapshot().getLoadable(atomTodoIsAvailable).contents
+  const { isCheck } = todo
+
+  const handleToggleCheck = () => {
+    isAvailable && setTodo({ ...todo, isCheck: !isCheck })
+  }
 
   const randomNumber = useMemo(() => {
     return betweenRandomNumber(1, 8)

@@ -10,4 +10,4 @@ const Line = () => {
   )
 }
 
-export default memo(Line)
+export default Line
