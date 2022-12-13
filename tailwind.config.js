@@ -30,6 +30,7 @@ module.exports = {
           repeat: TODO_ITEMS_COUNT,
         }),
         "choonsik-bg": "url('assets/choonsik-bg.png')",
+        "choonsik-input": "url('assets/choonsik-input.png')",
       },
     },
   },
