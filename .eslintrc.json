@@ -4,6 +4,13 @@
     "es2021": true,
     "node": true
   },
+  "plugins": [
+    "react",
+    "import",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -20,14 +27,21 @@
     "sourceType": "module",
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "import", "@typescript-eslint", "prettier"],
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "useRecoilCallback"
+      }
+    ],
     "react/jsx-first-prop-new-line": [2, "multiline"],
     "react/jsx-max-props-per-line": [2, { "maximum": 1, "when": "multiline" }],
     "react/jsx-indent-props": [2, 2],
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "warn",
     "@typescript-eslint/no-var-requires": "warn",
+    "no-empty": "warn",
 
     "import/order": "error",
     "sort-imports": [
