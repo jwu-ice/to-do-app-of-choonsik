@@ -13,15 +13,19 @@ export type todoJSONType = {
 const TodoList = () => {
   const todoIds = useRecoilValue(atomTodoIds)
 
+  const hasTodos = Array.isArray(todoIds) && todoIds.length
+
   return (
-    <div id="투두리스트" className="grid grid-cols-1 gap-3">
-      {todoIds.length ? (
-        todoIds.reduceRight((prev: ReactNode[], todoId: number) => {
-          return [...prev, <TodoItem key={todoId} todoId={todoId} />]
-        }, [])
-      ) : (
-        <div>todo 작성하세요</div>
-      )}
+    <div className="p-0">
+      <div id="투두리스트" className="grid grid-cols-1 gap-2">
+        {hasTodos ? (
+          todoIds.reduceRight((prev: ReactNode[], todoId: number) => {
+            return [...prev, <TodoItem key={todoId} todoId={todoId} />]
+          }, [])
+        ) : (
+          <div>todo 작성하세요</div>
+        )}
+      </div>
     </div>
   )
 }
