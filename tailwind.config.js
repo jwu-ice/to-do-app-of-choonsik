@@ -31,6 +31,8 @@ module.exports = {
         }),
         "choonsik-bg": "url('assets/choonsik-bg.png')",
         "choonsik-input": "url('assets/choonsik-input.png')",
+        "choonsik-loading-1": "url('assets/choonsik-loading1.png')",
+        "choonsik-loading-2": "url('assets/choonsik-loading2.png')",
       },
     },
   },

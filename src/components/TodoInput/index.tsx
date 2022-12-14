@@ -35,7 +35,7 @@ const TodoInput = () => {
   )
 
   return (
-    <div className="z-10 h-32 mt-auto mb-24">
+    <div className="h-32 mt-auto mb-24">
       <div className="h-full py-12 bg-no-repeat bg-contain bg-choonsik-input ">
         <input
           className="w-2/3 pl-4 overflow-hidden text-4xl bg-transparent focus:outline-none placeholder:pl-8 placeholder:text-black/50"
