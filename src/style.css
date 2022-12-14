@@ -12,3 +12,9 @@
     @apply text-lg font-bold;
   }
 }
+
+@layer utilities {
+  .text-checked {
+    @apply line-through opacity-30 pointer-events-none;
+  }
+}

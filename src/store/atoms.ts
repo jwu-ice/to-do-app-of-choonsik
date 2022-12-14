@@ -6,7 +6,6 @@ const atomFamilyTodoEffect =
   (key: string, id: number) =>
   ({ setSelf, onSet }: any) => {
     const savedValue = localStorage.getItem(key + String(id))
-    console.log("savedValue", savedValue)
     if (savedValue != null) {
       setSelf(JSON.parse(savedValue))
     }
@@ -21,8 +20,6 @@ const atomFamilyTodoEffect =
 export const atomFamilyTodo = atomFamily<todoJSONType, number>({
   key: "atomFamilyTodo",
   default: (id) => {
-    console.log("atomFamily:", id)
-
     return {
       id: id,
       text: "",

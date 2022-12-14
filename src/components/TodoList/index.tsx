@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil"
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useId } from "react"
 import Loading from "../Loading/index"
 import TodoItem from "@/components/TodoItem"
 import { atomTodoIds } from "@/store/atoms"
@@ -20,7 +20,7 @@ const TodoList = () => {
     <div className="h-full">
       {hasTodos ? (
         <div id="투두리스트" className="grid grid-cols-1 gap-3">
-          {todoIds.reduceRight((prev: ReactNode[], todoId: number) => {
+          {todoIds.reduce((prev: ReactNode[], todoId: number) => {
             return [...prev, <TodoItem key={todoId} todoId={todoId} />]
           }, [])}
         </div>

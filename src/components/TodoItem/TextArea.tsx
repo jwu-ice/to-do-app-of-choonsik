@@ -1,13 +1,21 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useRef } from "react"
-import { useRecoilState } from "recoil"
-import { useState } from "react"
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react"
+import { useRecoilCallback, useRecoilState, useSetRecoilState } from "recoil"
+import { useMemo, useState } from "react"
 import { flushSync } from "react-dom"
+import { atomTodoIds } from "../../store/atoms"
 import { atomFamilyTodo } from "@/store/atoms"
 
 const TextArea = ({ id }: { id: number }) => {
   const [todo, setTodo] = useRecoilState(atomFamilyTodo(id))
+  const setIds = useSetRecoilState(atomTodoIds)
   const [height, setHeight] = useState<undefined | string>("32px")
-  const { text } = todo
+  const { text, isCheck } = todo
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -45,7 +53,9 @@ const TextArea = ({ id }: { id: number }) => {
       onKeyDown={handleEnterToTap}
       ref={textareaRef}
       style={{ height: height }}
-      className={`text-2xl w-full px-3 overflow-hidden bg-transparent outline-none resize-none focus:ring-4 focus:ring-sky-400 focus:rounded-3xl placeholder:text-black placeholder:opacity-50`}
+      className={`${
+        isCheck ? "text-checked" : ""
+      } text-3xl w-full px-3 overflow-hidden bg-transparent outline-none resize-none focus:ring-4 focus:ring-sky-400/50 focus:rounded-3xl placeholder:text-black placeholder:opacity-50 `}
       defaultValue={text}
       maxLength={255}
       rows={1}
