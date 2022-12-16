@@ -9,7 +9,7 @@ function App() {
     <RecoilRoot>
       <div
         id="배경"
-        className=" flex flex-col mx-auto pt-8 px-16 my-8 w-[640px] h-[926px] bg-no-repeat bg-contain bg-choonsik-bg"
+        className=" flex flex-col mx-auto pt-8 pl-16 pr-8 my-8 w-[640px] h-[944px] bg-no-repeat bg-contain bg-choonsik-bg"
       >
         <div
           id="메인제목"
@@ -39,8 +39,8 @@ function Title() {
 
 function SettingBox() {
   return (
-    <div className="absolute -right-8">
-      <button className="opacity-70 hover:opacity-100">
+    <div className="absolute -right-1">
+      <button className="opacity-50 hover:opacity-80">
         <img
           className="object-cover object-center"
           src={세팅상자}
