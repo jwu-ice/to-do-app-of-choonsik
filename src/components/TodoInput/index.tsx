@@ -1,12 +1,11 @@
-import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from "recoil"
+import { ChangeEvent, KeyboardEvent, useState } from "react"
+import { useRecoilCallback, useSetRecoilState } from "recoil"
 import { atomFamilyTodo } from "../../store/atoms"
 import { atomTodoIds } from "@/store/atoms"
 import { TODO_ITEMS_COUNT } from "@/settings"
 
 const TodoInput = () => {
   const [text, setText] = useState<string>("")
-  const newId = useRef(0)
   const setTodoIds = useSetRecoilState(atomTodoIds)
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,12 +19,15 @@ const TodoInput = () => {
         if (e.key === "Enter" && text.trim() !== "") {
           const todoIds = snapshot.getLoadable(atomTodoIds).contents
 
-          if (todoIds.length >= TODO_ITEMS_COUNT) return
+          // [ ] TODO 개수 제한
+          // if (todoIds.length >= TODO_ITEMS_COUNT) return
 
-          newId.current = todoIds?.length ? Math.max(...todoIds) + 1 : 1
+          const newId = todoIds?.length ? Math.max(...todoIds) + 1 : 1
 
-          setTodoIds([...todoIds, newId.current])
-          set(atomFamilyTodo(newId.current), (currTodo) => ({
+          setTodoIds((currIds) => {
+            return [...currIds, newId]
+          })
+          set(atomFamilyTodo(newId), (currTodo) => ({
             ...currTodo,
             text: text.trim(),
           }))
