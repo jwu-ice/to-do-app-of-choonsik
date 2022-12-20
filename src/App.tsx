@@ -9,7 +9,7 @@ function App() {
     <RecoilRoot>
       <div
         id="배경"
-        className=" flex flex-col mx-auto pt-8 px-8 my-8 w-[640px] h-[944px] bg-no-repeat bg-contain bg-choonsik-bg"
+        className="flex flex-col mx-auto pt-8 px-8 my-8 w-[640px] h-[944px] bg-no-repeat bg-contain bg-choonsik-bg"
       >
         <div
           id="메인제목"
