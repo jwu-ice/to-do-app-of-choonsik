@@ -1,7 +1,6 @@
-import { RecoilState, atom, useRecoilCallback } from "recoil"
-import { atomFamilyTodo } from "@/store/todo"
+import { atom, useRecoilCallback } from "recoil"
 
-export type DispatchTodoIdsType =
+type DispatchTodoIdsType =
   | {
       type: "CREATE"
       newId: number
@@ -11,7 +10,7 @@ export type DispatchTodoIdsType =
       targetId: number
     }
 
-const reducerTodoIds = (state: number[], action: DispatchTodoIdsType) => {
+const reducer = (state: number[], action: DispatchTodoIdsType) => {
   switch (action.type) {
     case "CREATE":
       return [...state, action.newId]
@@ -30,7 +29,7 @@ export const useDispatchTodoIds = () => {
   const dispatch = useRecoilCallback(
     ({ set }) =>
       (action: DispatchTodoIdsType) => {
-        set(atomTodoIds, (curr: number[]) => reducerTodoIds(curr, action))
+        set(atomTodoIds, (curr: number[]) => reducer(curr, action))
       },
   )
 

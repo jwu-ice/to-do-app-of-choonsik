@@ -1,7 +1,7 @@
-import { RecoilState, atomFamily, useRecoilCallback } from "recoil"
+import { atomFamily, useRecoilCallback } from "recoil"
 import { todoJSONType } from "@/components/TodoList"
 
-export type DispatchTodoType =
+type DispatchTodoType =
   | {
       type: "EDIT_TEXT"
       text: string
@@ -10,7 +10,7 @@ export type DispatchTodoType =
       type: "CHECK"
     }
 
-const reducerTodo = (state: todoJSONType, action: DispatchTodoType) => {
+const reducer = (state: todoJSONType, action: DispatchTodoType) => {
   switch (action.type) {
     case "EDIT_TEXT":
       return { ...state, text: action.text.trim() }
@@ -27,7 +27,7 @@ export const useDispatchTodo = () => {
   const dispatch = useRecoilCallback(
     ({ set }) =>
       (id: number, action: DispatchTodoType) => {
-        set(atomFamilyTodo(id), (curr) => reducerTodo(curr, action))
+        set(atomFamilyTodo(id), (curr) => reducer(curr, action))
       },
   )
 

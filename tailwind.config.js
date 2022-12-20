@@ -1,14 +1,15 @@
 const { TODO_ITEMS_COUNT } = require("./src/settings")
 const { repeatObject } = require("./src/utils/repeatObject")
 
+// FIXME 그냥 일일히 쓰면 적용되는데. 변수로 만들면 적용 안됨. 무슨 문제지?
+const height_px_0_100 = [...Array(101).keys()].map((v) => `h-[${v}px]`)
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   safelist: [
     { pattern: /bg-(checkbox|line)-\d+/ },
     { pattern: /bg-(checkbox)-checked-\d+/ },
-    // FIXME asdasdas 왜 JIT 모드 h-[120px]같은건 적용이 안될까?
-    // 위에는 왜 되는거지
     // { pattern: /h-\[\d+px\]/ },
   ],
   theme: {
