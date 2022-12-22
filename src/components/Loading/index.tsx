@@ -1,6 +1,11 @@
-const loadingSelector = ["bg-choonsik-loading-1", "bg-choonsik-loading-2"]
+import { useMemo } from "react"
 
 const Loading = () => {
+  // depend on tailwind style
+  const loadingSelector = useMemo(
+    () => ["bg-choonsik-loading-1", "bg-choonsik-loading-2"],
+    [],
+  )
   const randomLoadingNumber = Math.floor(Math.random() * loadingSelector.length)
   const loadingImage = loadingSelector[randomLoadingNumber]
 
@@ -8,7 +13,7 @@ const Loading = () => {
     <div className="">
       {loadingSelector.length ? (
         <div
-          className={`${loadingImage} w-60 h-60 bg-contain bg-no-repeat mx-auto mt-32`}
+          className={`${loadingImage} w-60 h-60 bg-contain bg-no-repeat bg-center mx-auto mt-32`}
         />
       ) : (
         <div className="mt-4 text-4xl text-center">

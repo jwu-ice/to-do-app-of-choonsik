@@ -1,31 +1,42 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useRef } from "react"
-import { useRecoilState } from "recoil"
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { useState } from "react"
 import { flushSync } from "react-dom"
-import { atomFamilyTodo } from "@/store/atoms"
+import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
 
 const TextArea = ({ id }: { id: number }) => {
-  const [todo, setTodo] = useRecoilState(atomFamilyTodo(id))
-  const [height, setHeight] = useState<undefined | string>("32px")
+  const todo = useRecoilValue(atomFamilyTodo(id))
   const { text, isCheck } = todo
+  const { dispatch } = useDispatchTodo()
+  const [height, setHeight] = useState<undefined | string>("h-[0px]")
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const handleChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const currentValue = e.target.value
+  const handleChangeValue = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      const currentText = e.target.value
 
-    setTimeout(() => {
-      const newTodo = { ...todo, text: currentValue }
-      currentValue === e.target.value && setTodo(newTodo)
-    }, 200)
+      setTimeout(() => {
+        currentText === e.target.value &&
+          dispatch(id, { type: "EDIT_TEXT", text: currentText })
+      }, 200)
 
-    flushSync(() => {
-      setHeight("auto")
-    })
-    flushSync(() => {
-      setHeight(textareaRef.current?.scrollHeight + "px")
-    })
-  }
+      flushSync(() => {
+        setHeight("auto")
+      })
+      flushSync(() => {
+        setHeight("h-[" + textareaRef.current?.scrollHeight + "px]")
+      })
+    },
+    [dispatch, id],
+  )
 
   const handleEnterToTap = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
@@ -36,18 +47,30 @@ const TextArea = ({ id }: { id: number }) => {
 
   useEffect(() => {
     setHeight("auto")
-    setHeight(textareaRef.current?.scrollHeight + "px")
+    setHeight("h-[" + textareaRef.current?.scrollHeight + "px]")
   }, [])
 
+  // drag and drop 대비
+  // const handlePreventEvent = (e: MouseEvent<HTMLTextAreaElement>) => {
+  //   e.preventDefault()
+  // }
+
+  // const handleFocus = (e: MouseEvent<HTMLTextAreaElement>) => {
+  //   e.currentTarget.focus()
+  // }
+
+  const data = 10
   return (
     <textarea
       onChange={handleChangeValue}
       onKeyDown={handleEnterToTap}
+      // onMouseDown={handlePreventEvent}
+      // onMouseUp={handleFocus}
       ref={textareaRef}
-      style={{ height: height }}
+      // style={{ height: height }}
       className={`${
         isCheck ? "text-checked" : ""
-      } cursor-pointer text-3xlw-full pr-6 overflow-hidden bg-transparent outline-none resize-none focus:ring-4 focus:ring-sky-400/50 focus:rounded-3xl placeholder:text-black placeholder:opacity-50 `}
+      } ${height} cursor-pointer text-3xl w-full px-3 top-[${data}%] overflow-hidden bg-transparent outline-none resize-none focus:ring-4 focus:ring-black/30 focus:rounded-3xl placeholder:text-black placeholder:opacity-50`}
       defaultValue={text}
       maxLength={255}
       rows={1}

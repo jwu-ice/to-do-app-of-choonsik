@@ -1,12 +1,12 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react"
-import { useRecoilCallback, useSetRecoilState } from "recoil"
-import { atomFamilyTodo } from "../../store/atoms"
-import { atomTodoIds } from "@/store/atoms"
-import { TODO_ITEMS_COUNT } from "@/settings"
+import { useRecoilCallback } from "recoil"
+import { useDispatchTodo } from "@/store/todo"
+import { atomTodoIds, useDispatchTodoIds } from "@/store/todoIds"
 
 const TodoInput = () => {
   const [text, setText] = useState<string>("")
-  const setTodoIds = useSetRecoilState(atomTodoIds)
+  const { dispatch: dispatchTodoIds } = useDispatchTodoIds()
+  const { dispatch: dispatchTodo } = useDispatchTodo()
 
   const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -14,7 +14,7 @@ const TodoInput = () => {
   }
 
   const handleCreateTodo = useRecoilCallback(
-    ({ snapshot, set }) =>
+    ({ snapshot }) =>
       (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && text.trim() !== "") {
           const todoIds = snapshot.getLoadable(atomTodoIds).contents
@@ -24,23 +24,18 @@ const TodoInput = () => {
 
           const newId = todoIds?.length ? Math.max(...todoIds) + 1 : 1
 
-          setTodoIds((currIds) => {
-            return [...currIds, newId]
-          })
-          set(atomFamilyTodo(newId), (currTodo) => ({
-            ...currTodo,
-            text: text.trim(),
-          }))
+          dispatchTodoIds({ type: "CREATE", newId: newId })
+          dispatchTodo(newId, { type: "EDIT_TEXT", text: text })
           setText("")
         }
       },
   )
 
   return (
-    <div className="h-32 mt-auto mb-24">
-      <div className="h-full py-12 bg-no-repeat bg-contain bg-choonsik-input ">
+    <div className="px-6 mt-auto mb-28 h-28">
+      <div className="h-full py-12 bg-center bg-no-repeat bg-contain bg-choonsik-input">
         <input
-          className="w-2/3 pl-4 overflow-hidden text-4xl bg-transparent focus:outline-none placeholder:pl-8 placeholder:text-black/50"
+          className="w-2/3 pl-8 overflow-hidden text-3xl bg-transparent focus:outline-none placeholder:pl-8 placeholder:text-black/50 placeholder:text-4xl"
           type="text"
           placeholder="할 일을 입력하라구"
           onChange={handleChangeText}

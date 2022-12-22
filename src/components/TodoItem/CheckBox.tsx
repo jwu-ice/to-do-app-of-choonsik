@@ -1,14 +1,15 @@
 import { useMemo } from "react"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { betweenRandomNumber } from "@/utils/number"
-import { atomFamilyTodo } from "@/store/atoms"
+import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
 
 const CheckBox = ({ id }: { id: number }) => {
-  const [todo, setTodo] = useRecoilState(atomFamilyTodo(id))
+  const { dispatch } = useDispatchTodo()
+  const todo = useRecoilValue(atomFamilyTodo(id))
   const { isCheck } = todo
 
   const handleToggleCheck = () => {
-    setTodo({ ...todo, isCheck: !isCheck })
+    dispatch(id, { type: "CHECK" })
   }
 
   const randomNumber = useMemo(() => {
@@ -33,8 +34,5 @@ const CheckBox = ({ id }: { id: number }) => {
     </button>
   )
 }
-// export default memo(CheckBox, (prev, next) => {
-//   return prev.isCheck === next.isCheck
-// })
 
 export default CheckBox
