@@ -1,5 +1,5 @@
 {
-  "name": "to-do",
+  "name": "todo-with-choonsik",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -37,8 +37,8 @@
   "scripts": {
     "start": "concurrently \"npm run start:css\" \"craco start\"",
     "start:css": "tailwindcss -o src/style-build.css --watch",
-    "build": "npm run build:css && craco build",
-    "build:css": "cross-env NODE_ENV=production tailwindcss -o src/style-build.css -m",
+    "build": "npm run build:css && craco build ",
+    "build:css": "cross-env INLINE_RUNTIME_CHUNK=false NODE_ENV=production tailwindcss -o src/style-build.css -m",
     "test": "craco test",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "eject": "react-scripts eject"
