@@ -27,7 +27,7 @@ function App() {
 
 function Title() {
   return (
-    <div className="w-[429px] h-[88px] ">
+    <div className="w-[429px] h-[88px] text-blue-700">
       <img
         className="object-cover object-center"
         src={춘식이타이틀}

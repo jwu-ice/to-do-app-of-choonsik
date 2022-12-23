@@ -1,17 +1,14 @@
 const { TODO_ITEMS_COUNT } = require("./src/settings")
 const { repeatObject } = require("./src/utils/repeatObject")
 
-// FIXME 그냥 일일히 쓰면 적용되는데. 변수로 만들면 적용 안됨. 무슨 문제지?
-const height_px_0_100 = [...Array(101).keys()].map((v) => `h-[${v}px]`)
+// BUG
+// safelist not work variant
+
+const height_px_0_100 = [...Array(101).keys()].flatMap((v) => [`h-[${v}px]`])
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  safelist: [
-    { pattern: /bg-(checkbox|line)-\d+/ },
-    { pattern: /bg-(checkbox)-checked-\d+/ },
-    // { pattern: /h-\[\d+px\]/ },
-  ],
   theme: {
     extend: {
       backgroundImage: {
@@ -37,8 +34,16 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    "choonsik-1",
+    "choonsik-2",
+    { pattern: /bg-(checkbox|line)-\d+/ },
+    { pattern: /bg-(checkbox)-checked-\d+/ },
+    // { pattern: /h-\[\d+px\]/ },
+    // ...height_px_0_100,
+  ],
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
+    // require("@tailwindcss/aspect-ratio"),
     require("tailwind-scrollbar")({ nocompatible: true }),
   ],
 }
