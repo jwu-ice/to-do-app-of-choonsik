@@ -8,7 +8,7 @@ const TodoItem = (props: any) => {
   const { todoId } = props
 
   return (
-    <div className="group/item relative z-10 hover:bg-transparent/5 hover:cursor-pointer rounded-2xl">
+    <div className="group/item relative z-10 rounded-2xl hover:cursor-pointer hover:bg-transparent/5">
       <div className="flex gap-2 p-2">
         <CheckBox id={todoId} />
         <TextArea id={todoId} />

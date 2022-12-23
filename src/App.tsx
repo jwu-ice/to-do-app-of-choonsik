@@ -4,16 +4,16 @@ import 세팅상자 from "@/assets/settingBox.png"
 import TodoList from "@/components/TodoList"
 import TodoInput from "@/components/TodoInput"
 
-function App() {
+const App = () => {
   return (
     <RecoilRoot>
       <div
         id="배경"
-        className="flex flex-col mx-auto pt-8 px-8 my-8 w-[640px] h-[944px] bg-no-repeat bg-contain bg-choonsik-bg"
+        className="mx-auto my-8 flex aspect-square h-full w-[360px] flex-col bg-choonsik-bg bg-contain bg-no-repeat px-8 pt-6"
       >
         <div
           id="메인제목"
-          className="relative flex items-center justify-center py-3 "
+          className="relative flex items-center justify-center"
         >
           <Title />
           <SettingBox />
@@ -27,7 +27,7 @@ function App() {
 
 function Title() {
   return (
-    <div className="w-[429px] h-[88px] text-blue-700">
+    <div className="w-[220px] ">
       <img
         className="object-cover object-center"
         src={춘식이타이틀}
@@ -39,15 +39,13 @@ function Title() {
 
 function SettingBox() {
   return (
-    <div className="absolute -right-1">
-      <button className="opacity-50 hover:opacity-80">
-        <img
-          className="object-cover object-center"
-          src={세팅상자}
-          alt={세팅상자}
-        />
-      </button>
-    </div>
+    <button className="absolute -right-1 w-[30px] opacity-40 hover:opacity-80">
+      <img
+        className="object-cover object-center "
+        src={세팅상자}
+        alt={세팅상자}
+      />
+    </button>
   )
 }
 

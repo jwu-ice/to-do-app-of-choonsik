@@ -9,12 +9,14 @@
     "import",
     "react-hooks",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "tailwindcss"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
+    "plugin:tailwindcss/recommended",
     "prettier",
     "plugin:prettier/recommended",
     "plugin:react/jsx-runtime"
@@ -28,6 +30,7 @@
     "project": ["./tsconfig.json"]
   },
   "rules": {
+    "tailwindcss/no-custom-classname": "off",
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": [
       "warn",

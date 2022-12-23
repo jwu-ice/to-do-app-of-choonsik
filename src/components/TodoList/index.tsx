@@ -17,9 +17,9 @@ const TodoList = () => {
   const hasTodos = Array.isArray(todoIds) && todoIds.length
 
   return (
-    <div className="z-20 h-full px-6 my-2 scrollbar-thin scrollbar-thumb-rounded-2xl scrollbar-track-rounded-2xl scrollbar-thumb-transparent/10 hover:scrollbar-thumb-transparent/20 scrollbar-track-transparent/5">
+    <div className="relative z-20 my-2 h-full scrollbar-thin scrollbar-track-transparent/5 scrollbar-thumb-transparent/10 scrollbar-track-rounded-2xl scrollbar-thumb-rounded-2xl hover:scrollbar-thumb-transparent/20">
       {hasTodos ? (
-        <div id="투두리스트" className="grid grid-cols-1 gap-3">
+        <div id="투두리스트" className="grid grid-cols-1 gap-2 ">
           {todoIds.reduce((prev: ReactNode[], todoId: number) => {
             return [...prev, <TodoItem key={todoId} todoId={todoId} />]
           }, [])}

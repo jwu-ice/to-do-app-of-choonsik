@@ -1,4 +1,3 @@
-const { TODO_ITEMS_COUNT } = require("./src/settings")
 const { repeatObject } = require("./src/utils/repeatObject")
 
 // BUG
@@ -15,17 +14,17 @@ module.exports = {
         ...repeatObject({
           className: "checkbox-",
           imageName: "checkBox",
-          repeat: TODO_ITEMS_COUNT,
+          repeat: 8,
         }),
         ...repeatObject({
           className: "checkbox-checked-",
           imageName: "checkBox_checked",
-          repeat: TODO_ITEMS_COUNT,
+          repeat: 8,
         }),
         ...repeatObject({
           className: "line-",
           imageName: "line",
-          repeat: TODO_ITEMS_COUNT,
+          repeat: 8,
         }),
         "choonsik-bg": "url('assets/choonsik-bg.png')",
         "choonsik-input": "url('assets/choonsik-input.png')",
@@ -42,8 +41,5 @@ module.exports = {
     // { pattern: /h-\[\d+px\]/ },
     // ...height_px_0_100,
   ],
-  plugins: [
-    // require("@tailwindcss/aspect-ratio"),
-    require("tailwind-scrollbar")({ nocompatible: true }),
-  ],
+  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 }

@@ -1,22 +1,18 @@
-import { useMemo } from "react"
+import { TODO_LOADING_IMAGE } from "@/settings"
 
 const Loading = () => {
-  // depend on tailwind style
-  const loadingSelector = useMemo(
-    () => ["bg-choonsik-loading-1", "bg-choonsik-loading-2"],
-    [],
+  const randomLoadingNumber = Math.floor(
+    Math.random() * TODO_LOADING_IMAGE.length,
   )
-  const randomLoadingNumber = Math.floor(Math.random() * loadingSelector.length)
-  const loadingImage = loadingSelector[randomLoadingNumber]
 
   return (
-    <div className="">
-      {loadingSelector.length ? (
+    <div>
+      {TODO_LOADING_IMAGE.length ? (
         <div
-          className={`${loadingImage} w-60 h-60 bg-contain bg-no-repeat bg-center mx-auto mt-32`}
+          className={`${TODO_LOADING_IMAGE[randomLoadingNumber]} mx-auto mt-20 h-40 w-40 bg-contain bg-center bg-no-repeat`}
         />
       ) : (
-        <div className="mt-4 text-4xl text-center">
+        <div className="mt-2 text-center text-xl">
           <p>할 일을 입력하자!</p>
           <p>혹시 한 개도 없는거야?</p>
         </div>

@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilValue } from "recoil"
 import { betweenRandomNumber } from "@/utils/number"
 import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
 
@@ -22,14 +22,14 @@ const CheckBox = ({ id }: { id: number }) => {
 
   return (
     <button
-      className="h-10 w-11 focus:ring-blue-400 focus:rounded-xl focus:ring-4 focus:outline-none"
+      className="aspect-square h-6 focus:rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-400"
       onClick={handleToggleCheck}
       tabIndex={0}
       role="checkbox"
       aria-checked={isCheck}
     >
       <div
-        className={`${checkboxStatus} w-full h-full bg-cover cursor-pointer hover:opacity-70`}
+        className={`${checkboxStatus} h-full w-full cursor-pointer bg-cover hover:opacity-70`}
       />
     </button>
   )

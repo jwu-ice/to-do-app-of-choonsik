@@ -15,7 +15,7 @@ const TextArea = ({ id }: { id: number }) => {
   const todo = useRecoilValue(atomFamilyTodo(id))
   const { text, isCheck } = todo
   const { dispatch } = useDispatchTodo()
-  const [height, setHeight] = useState<undefined | string>("h-[0px]")
+  const [height, setHeight] = useState<string | undefined>("0")
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -32,7 +32,7 @@ const TextArea = ({ id }: { id: number }) => {
         setHeight("auto")
       })
       flushSync(() => {
-        setHeight("h-[" + textareaRef.current?.scrollHeight + "px]")
+        setHeight(`${textareaRef.current?.scrollHeight}px`)
       })
     },
     [dispatch, id],
@@ -47,7 +47,7 @@ const TextArea = ({ id }: { id: number }) => {
 
   useEffect(() => {
     setHeight("auto")
-    setHeight("h-[" + textareaRef.current?.scrollHeight + "px]")
+    setHeight(`${textareaRef.current?.scrollHeight}px`)
   }, [])
 
   // drag and drop 대비
@@ -59,7 +59,6 @@ const TextArea = ({ id }: { id: number }) => {
   //   e.currentTarget.focus()
   // }
 
-  const data = 10
   return (
     <textarea
       onChange={handleChangeValue}
@@ -67,10 +66,10 @@ const TextArea = ({ id }: { id: number }) => {
       // onMouseDown={handlePreventEvent}
       // onMouseUp={handleFocus}
       ref={textareaRef}
-      // style={{ height: height }}
+      style={{ height: height }}
       className={`${
         isCheck ? "text-checked" : ""
-      } ${height} cursor-pointer text-3xl w-full px-3 top-[${data}%] overflow-hidden bg-transparent outline-none resize-none focus:ring-4 focus:ring-black/30 focus:rounded-3xl placeholder:text-black placeholder:opacity-50`}
+      } ${height} w-full cursor-pointer resize-none overflow-hidden bg-transparent px-1 outline-none placeholder:text-black  placeholder:opacity-50 focus:rounded-3xl focus:ring-2 focus:ring-black/30`}
       defaultValue={text}
       maxLength={255}
       rows={1}

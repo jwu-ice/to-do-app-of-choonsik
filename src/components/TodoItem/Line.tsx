@@ -3,11 +3,12 @@ import { betweenRandomNumber } from "@/utils/number"
 
 const Line = () => {
   const randomLineName = `bg-line-${betweenRandomNumber(1, 8)}`
+
   return (
-    <div className="relative ml-2 bg-transparent -z-10 opacity-80 bottom-6">
+    <div className="relative ml-3 bg-transparent -z-10 opacity-80 bottom-4">
       {
         <div
-          className={`${randomLineName} w-full h-8 bg-no-repeat absolute top-1`}
+          className={`${randomLineName} w-full h-6 bg-contain bg-no-repeat absolute aspect-square`}
         />
       }
     </div>

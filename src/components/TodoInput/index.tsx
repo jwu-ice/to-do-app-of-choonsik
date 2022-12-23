@@ -32,10 +32,10 @@ const TodoInput = () => {
   )
 
   return (
-    <div className="px-6 mt-auto mb-28 h-28">
-      <div className="h-full py-12 bg-center bg-no-repeat bg-contain bg-choonsik-input">
+    <div className="mt-auto mb-28 h-28 px-6">
+      <div className="h-full bg-choonsik-input bg-contain bg-center bg-no-repeat py-12">
         <input
-          className="w-2/3 pl-8 overflow-hidden text-3xl bg-transparent focus:outline-none placeholder:pl-8 placeholder:text-black/50 placeholder:text-4xl"
+          className="w-2/3 overflow-hidden bg-transparent pl-8 text-3xl placeholder:pl-8 placeholder:text-4xl placeholder:text-black/50 focus:outline-none"
           type="text"
           placeholder="할 일을 입력하라구"
           onChange={handleChangeText}

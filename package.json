@@ -9,7 +9,6 @@
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -27,6 +26,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-tailwindcss": "^3.7.1",
     "postcss": "^8.4.17",
     "recoil": "^0.7.6",
     "source-map-explorer": "^2.5.3",
