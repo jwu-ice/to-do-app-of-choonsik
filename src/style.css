@@ -8,8 +8,8 @@
   }
 
   body {
-    @apply h-screen bg-blue-100;
-    @apply text-lg font-bold;
+    @apply bg-slate-50;
+    @apply text-base font-bold;
   }
 }
 

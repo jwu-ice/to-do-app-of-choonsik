@@ -64,13 +64,14 @@ const TextArea = ({ id }: { id: number }) => {
     <textarea
       onChange={handleChangeValue}
       onKeyDown={handleEnterToTap}
+      // onClick={(e) => (e.currentTarget.disabled = true)}
       // onMouseDown={handlePreventEvent}
       // onMouseUp={handleFocus}
       ref={textareaRef}
       style={{ height: height }}
       className={`${
         isCheck ? "text-checked" : ""
-      } ${height} w-full cursor-pointer resize-none overflow-hidden bg-transparent px-1 outline-none placeholder:text-black  placeholder:opacity-50 focus:rounded-3xl focus:ring-2 focus:ring-black/30`}
+      } ${height} w-full cursor-pointer resize-none overflow-hidden bg-transparent px-1 pr-5 outline-none placeholder:text-black  placeholder:opacity-50 focus:cursor-text focus:rounded-xl focus:ring-2 focus:ring-black/30`}
       defaultValue={text}
       maxLength={255}
       rows={1}
@@ -82,5 +83,4 @@ const TextArea = ({ id }: { id: number }) => {
   )
 }
 
-export default TextArea
 export default memo(TextArea)

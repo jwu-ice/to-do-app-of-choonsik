@@ -5,10 +5,10 @@ const Line = () => {
   const randomLineName = `bg-line-${betweenRandomNumber(1, 8)}`
 
   return (
-    <div className="relative ml-3 bg-transparent -z-10 opacity-80 bottom-4">
+    <div className="relative bottom-3 -z-10 ml-3 bg-transparent opacity-80 ">
       {
         <div
-          className={`${randomLineName} w-full h-6 bg-contain bg-no-repeat absolute aspect-square`}
+          className={`${randomLineName} absolute aspect-square h-6 w-full bg-contain bg-no-repeat`}
         />
       }
     </div>
