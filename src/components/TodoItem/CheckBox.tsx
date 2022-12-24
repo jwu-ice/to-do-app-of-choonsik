@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { memo, useMemo } from "react"
 import { useRecoilValue } from "recoil"
 import { betweenRandomNumber } from "@/utils/number"
 import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
@@ -22,7 +22,7 @@ const CheckBox = ({ id }: { id: number }) => {
 
   return (
     <button
-      className="aspect-square h-6 focus:rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-400"
+      className="mt-1 aspect-square h-5 focus:rounded-xl focus:outline-none focus:ring-2"
       onClick={handleToggleCheck}
       tabIndex={0}
       role="checkbox"
@@ -35,4 +35,4 @@ const CheckBox = ({ id }: { id: number }) => {
   )
 }
 
-export default CheckBox
+export default memo(CheckBox)

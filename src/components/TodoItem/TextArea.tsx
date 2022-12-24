@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   KeyboardEvent,
   MouseEvent,
+  memo,
   useCallback,
   useEffect,
   useRef,
@@ -82,3 +83,4 @@ const TextArea = ({ id }: { id: number }) => {
 }
 
 export default TextArea
+export default memo(TextArea)

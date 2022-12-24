@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { useDispatchTodoIds } from "@/store/todoIds"
 
 const Cancel = ({ id }: { id: number }) => {
@@ -25,3 +26,4 @@ const Cancel = ({ id }: { id: number }) => {
 }
 
 export default Cancel
+export default memo(Cancel)
