@@ -1,6 +1,6 @@
 {
-  "name": "To do list with ChoonSik - 춘식이와 같이 할 일 하기",
-  "description": "할 일이 많으신가요? 춘식이와 함께 할 일을 적어봐요!",
+  "name": "춘식이와 할 일 하기 - To do list with ChoonSik",
+  "description": "춘식이와 함께 할 일을 적어봐요",
   "version": "0.0.1",
   "manifest_version": 3,
   "action": {
@@ -9,7 +9,9 @@
   },
   "icons": {
     "16": "logo16.png",
+    "32": "logo32.png",
     "48": "logo48.png",
     "128": "logo128.png"
-  }
+  },
+  "permissions": ["storage"]
 }

@@ -1,4 +1,4 @@
-import { atom, useRecoilCallback } from "recoil"
+import { DefaultValue, atom, useRecoilCallback } from "recoil"
 import LocalStore from "@/utils/localStore"
 
 type DispatchTodoIdsType =
@@ -18,7 +18,7 @@ const reducer = (state: number[], action: DispatchTodoIdsType) => {
 
     case "DELETE": {
       const targetIndex = state.findIndex((id) => id === action.targetId)
-      // localStorage 분리할 순 없을까
+      // TODO localStorage 분리할 순 없을까
       LocalStore.remove(`todo-${action.targetId}`)
       return [...state.slice(0, targetIndex), ...state.slice(targetIndex + 1)]
     }
@@ -32,7 +32,9 @@ export const useDispatchTodoIds = () => {
   const dispatch = useRecoilCallback(
     ({ set }) =>
       (action: DispatchTodoIdsType) => {
-        set(atomTodoIds, (curr: number[]) => reducer(curr, action))
+        set(atomTodoIds, (curr: number[]) =>
+          curr instanceof DefaultValue ? curr : reducer(curr, action),
+        )
       },
   )
 

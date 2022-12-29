@@ -3,11 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: "Gamja Flower", "gothic";
-  }
-
   body {
+    font-family: "Gamja Flower", "gothic";
     @apply bg-slate-50;
     @apply text-base font-bold;
   }

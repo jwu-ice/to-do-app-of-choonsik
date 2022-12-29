@@ -1,4 +1,9 @@
-import { atomFamily, useRecoilCallback } from "recoil"
+import {
+  DefaultValue,
+  atomFamily,
+  selectorFamily,
+  useRecoilCallback,
+} from "recoil"
 import { todoJSONType } from "@/components/TodoList"
 
 type DispatchTodoType =
@@ -27,7 +32,9 @@ export const useDispatchTodo = () => {
   const dispatch = useRecoilCallback(
     ({ set }) =>
       (id: number, action: DispatchTodoType) => {
-        set(atomFamilyTodo(id), (curr) => reducer(curr, action))
+        set(atomFamilyTodo(id), (curr) =>
+          curr instanceof DefaultValue ? curr : reducer(curr, action),
+        )
       },
   )
 
@@ -60,4 +67,14 @@ export const atomFamilyTodo = atomFamily<todoJSONType, number>({
     } as todoJSONType
   },
   effects: (id) => [atomFamilyTodoEffect("todo-", id)],
+})
+
+const selectorFamilyTodo = selectorFamily({
+  key: "selectorFamilyTodo",
+  get:
+    (id: number) =>
+    ({ get }) => {
+      const todo = get(atomFamilyTodo(id))
+      return
+    },
 })

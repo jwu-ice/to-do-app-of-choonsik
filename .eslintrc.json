@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true,
+    "webextensions": true
   },
   "plugins": [
     "react",
@@ -43,6 +44,7 @@
     "react/jsx-indent-props": [2, 2],
     "react/no-unescaped-entities": 0,
     "no-unused-vars": "warn",
+    "no-undef": "error",
     "@typescript-eslint/no-var-requires": "warn",
     "no-empty": "warn",
 
