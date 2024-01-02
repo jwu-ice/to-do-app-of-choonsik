@@ -19,7 +19,7 @@ const TodoInput = () => {
         if (e.key === "Enter" && text.trim() !== "") {
           const todoIds = snapshot.getLoadable(atomTodoIds).contents
 
-          // [ ] TODO 개수 제한
+          // TODO 개수 제한
           // if (todoIds.length >= TODO_ITEMS_COUNT) return
 
           const newId = todoIds?.length ? Math.max(...todoIds) + 1 : 1
@@ -29,6 +29,7 @@ const TodoInput = () => {
           setText("")
         }
       },
+    [dispatchTodo, dispatchTodoIds, text],
   )
 
   return (
@@ -40,7 +41,7 @@ const TodoInput = () => {
         maxLength={255}
         placeholder="할 일을 입력하라구"
         onChange={handleChangeText}
-        onKeyDown={handleCreateTodo}
+        onKeyUp={handleCreateTodo}
         value={text}
       />
     </div>

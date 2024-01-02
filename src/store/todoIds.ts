@@ -36,6 +36,7 @@ export const useDispatchTodoIds = () => {
           curr instanceof DefaultValue ? curr : reducer(curr, action),
         )
       },
+    [],
   )
 
   return { dispatch }
