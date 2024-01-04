@@ -12,8 +12,8 @@ const TodoItem = (props: any) => {
       <div className="flex gap-1 p-2">
         <CheckBox id={todoId} />
         <TextArea id={todoId} />
+        <Cancel id={todoId} />
       </div>
-      <Cancel id={todoId} />
       <Line />
     </div>
   )

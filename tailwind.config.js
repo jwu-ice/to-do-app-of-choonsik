@@ -31,6 +31,9 @@ module.exports = {
         "choonsik-loading-1": "url('assets/choonsik-loading1.png')",
         "choonsik-loading-2": "url('assets/choonsik-loading2.png')",
       },
+      boxShadow: {
+        "animate-slide": "inset 10em 0 0 0 rgba(0, 0, 0, 0.2)",
+      },
     },
   },
   safelist: [

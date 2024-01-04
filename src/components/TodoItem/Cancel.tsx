@@ -1,20 +1,35 @@
-import { memo } from "react"
+import { MouseEvent, memo, useEffect, useRef } from "react"
 import { useDispatchTodoIds } from "@/store/todoIds"
 
 const Cancel = ({ id }: { id: number }) => {
   const { dispatch } = useDispatchTodoIds()
+  const intervalRef = useRef<number | null>(null)
 
-  const handleDelete = () => {
-    // popup overlay example
-    if (confirm("정말 지울거냐구!")) {
+  const handleStartDelete = () => {
+    if (intervalRef.current) return
+    intervalRef.current = window.setInterval(() => {
       dispatch({ type: "DELETE", targetId: id })
+    }, 500)
+  }
+
+  const handleStopDelete = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = null
     }
   }
 
+  useEffect(() => {
+    return () => {
+      handleStopDelete()
+    }
+  }, [])
+
   return (
     <div
-      onClick={handleDelete}
-      className="group/cancel invisible absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-0.5 transition group-hover/item:visible hover:bg-slate-100/30"
+      onMouseDown={handleStartDelete}
+      onMouseUp={handleStopDelete}
+      className="group/cancel invisible absolute right-2 top-1/2 -translate-y-1/2 rounded-full  p-0.5 group-hover/item:visible active:shadow-animate-slide active:duration-500"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
