@@ -20,6 +20,7 @@ const reducer = (state: number[], action: DispatchTodoIdsType) => {
       const targetIndex = state.findIndex((id) => id === action.targetId)
       // TODO localStorage 분리할 순 없을까
       LocalStore.remove(`todo-${action.targetId}`)
+
       return [...state.slice(0, targetIndex), ...state.slice(targetIndex + 1)]
     }
 
@@ -36,6 +37,7 @@ export const useDispatchTodoIds = () => {
           curr instanceof DefaultValue ? curr : reducer(curr, action),
         )
       },
+    [],
   )
 
   return { dispatch }

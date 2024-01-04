@@ -1,8 +1,6 @@
 const { repeatObject } = require("./src/utils/repeatObject")
 
-// BUG
-// safelist not work variant
-
+// BUG safelist not work about variant
 const height_px_0_100 = [...Array(101).keys()].flatMap((v) => [`h-[${v}px]`])
 
 /** @type {import('tailwindcss').Config} */
@@ -26,10 +24,12 @@ module.exports = {
           imageName: "line",
           repeat: 8,
         }),
-        "choonsik-bg": "url('assets/choonsik-bg.png')",
         "choonsik-input": "url('assets/choonsik-input.png')",
         "choonsik-loading-1": "url('assets/choonsik-loading1.png')",
         "choonsik-loading-2": "url('assets/choonsik-loading2.png')",
+      },
+      boxShadow: {
+        "animate-slide": "inset 10em 0 0 0 rgba(0, 0, 0, 0.2)",
       },
     },
   },
