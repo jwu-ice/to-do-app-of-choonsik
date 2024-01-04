@@ -35,9 +35,9 @@ const TodoInput = () => {
   return (
     <div className="mb-6 h-20 bg-choonsik-input bg-contain bg-center bg-no-repeat">
       <input
-        className="overflow-hidden bg-transparent pt-4 pl-12 text-lg placeholder:pl-1  placeholder:text-xl placeholder:text-slate-500 focus:outline-none"
+        className="overflow-hidden bg-transparent pl-24 pt-3 text-lg placeholder:text-base placeholder:text-slate-500 focus:outline-none"
         type="text"
-        size={18}
+        size={14}
         maxLength={255}
         placeholder="할 일을 입력하라구"
         onChange={handleChangeText}

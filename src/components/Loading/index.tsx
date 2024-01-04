@@ -9,7 +9,7 @@ const Loading = () => {
     <div>
       {TODO_LOADING_IMAGE.length ? (
         <div
-          className={`${TODO_LOADING_IMAGE[randomLoadingNumber]} mx-auto mt-20 h-40 w-40 bg-contain bg-center bg-no-repeat`}
+          className={`${TODO_LOADING_IMAGE[randomLoadingNumber]} mx-auto mt-10 h-32 w-32 bg-contain bg-center bg-no-repeat`}
         />
       ) : (
         <div className="mt-2 text-center text-xl">
