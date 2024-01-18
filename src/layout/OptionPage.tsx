@@ -20,28 +20,28 @@ const OptionPage = ({ isOpen, handleCloseOption }: PropsT) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const handleClickAllDeleteTodoList = () => {}
 
-  const OptionList = (
-    Object.entries(OPTION_LIST) as EntriesType<typeof OPTION_LIST>
-  ).map(([optionName, lang], index) => {
-    const TargetComponent = {
-      DO_DELETE_ALL: <CheckButton onClick={handleClickAllDeleteTodoList} />,
-      CHANGE_BACKGROUND_COLOR: <ColorPicker />,
-      CHANGE_LANGUAGE: <SelectOption />,
-    }
+  const OptionList = Object.entries(OPTION_LIST).map(
+    ([optionName, lang], index) => {
+      const TargetComponent = {
+        DO_DELETE_ALL: <CheckButton onClick={handleClickAllDeleteTodoList} />,
+        CHANGE_BACKGROUND_COLOR: <ColorPicker />,
+        CHANGE_LANGUAGE: <SelectOption />,
+      }
 
-    return (
-      <OptionItem
-        targetComponent={TargetComponent[optionName]}
-        languageType={language}
-        onClick={() => {
-          "void"
-        }}
-        optionName={optionName}
-        key={index}
-        tabIndex={index}
-      />
-    )
-  })
+      return (
+        <OptionItem
+          targetComponent={TargetComponent[optionName]}
+          languageType={language}
+          onClick={() => {
+            "void"
+          }}
+          optionName={optionName}
+          key={index}
+          tabIndex={index}
+        />
+      )
+    },
+  )
 
   return (
     <>
