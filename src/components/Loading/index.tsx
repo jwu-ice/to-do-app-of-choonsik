@@ -1,4 +1,4 @@
-import { TODO_LOADING_IMAGE } from "@/settings"
+import { TODO_LOADING_IMAGE } from "@/constants"
 
 const Loading = () => {
   const randomLoadingNumber = Math.floor(

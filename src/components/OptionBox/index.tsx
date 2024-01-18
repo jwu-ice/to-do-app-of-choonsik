@@ -1,13 +1,14 @@
+import { FC, MouseEventHandler } from "react"
 import 세팅상자 from "@/assets/settingBox.png"
 
-const SettingBox = () => {
-  const handleOption = () => {
-    console.log("settings..")
-  }
+type OptionBoxProps = {
+  handleClickOpenOption: MouseEventHandler<HTMLButtonElement>
+}
 
+const OptionBox: FC<OptionBoxProps> = ({ handleClickOpenOption }) => {
   return (
     <button
-      onClick={handleOption}
+      onClick={handleClickOpenOption}
       className="absolute right-3 w-[30px] opacity-40 hover:opacity-80"
     >
       <img
@@ -19,4 +20,4 @@ const SettingBox = () => {
   )
 }
 
-export default SettingBox
+export default OptionBox
