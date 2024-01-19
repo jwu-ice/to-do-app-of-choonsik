@@ -1,13 +1,13 @@
 import { ComponentProps, MouseEventHandler } from "react"
 
 type PropsT = {
-  onClick?: MouseEventHandler<HTMLButtonElement>
+  onClick?: MouseEventHandler<HTMLElement>
   className?: ComponentProps<"button">["className"]
 }
 
 const XButton = ({ onClick, className }: PropsT) => {
   return (
-    <button className={`h-4 w-4 ${className}`} onClick={onClick}>
+    <button className={`h-full w-full ${className}`} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"

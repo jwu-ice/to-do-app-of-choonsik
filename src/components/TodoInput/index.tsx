@@ -1,7 +1,8 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react"
 import { useRecoilCallback } from "recoil"
-import { useDispatchTodo } from "@/store/todo"
-import { atomTodoIds, useDispatchTodoIds } from "@/store/todoIds"
+import { useDispatchTodo } from "@/hooks/useDispatchTodo"
+import { useDispatchTodoIds } from "@/hooks/useDispatchTodoIds"
+import { atomTodoIds } from "@/store/todoIds"
 
 const TodoInput = () => {
   const [text, setText] = useState<string>("")

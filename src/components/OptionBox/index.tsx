@@ -1,11 +1,15 @@
-import { FC, MouseEventHandler } from "react"
+import { useCallback } from "react"
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
 import 세팅상자 from "@/assets/settingBox.png"
+import { atomOptionModal } from "@/store/optionModal"
 
-type OptionBoxProps = {
-  handleClickOpenOption: MouseEventHandler<HTMLButtonElement>
-}
+const OptionBox = () => {
+  const setIsOpen = useSetRecoilState(atomOptionModal)
 
-const OptionBox: FC<OptionBoxProps> = ({ handleClickOpenOption }) => {
+  const handleClickOpenOption = useCallback(() => {
+    setIsOpen(true)
+  }, [setIsOpen])
+
   return (
     <button
       onClick={handleClickOpenOption}
@@ -14,7 +18,7 @@ const OptionBox: FC<OptionBoxProps> = ({ handleClickOpenOption }) => {
       <img
         className="object-cover object-center "
         src={세팅상자}
-        alt={세팅상자}
+        alt="setting box"
       />
     </button>
   )

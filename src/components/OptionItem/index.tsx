@@ -20,7 +20,7 @@ const OptionItem = ({
     <div className="flex justify-between">
       <p>{OPTION_LIST[optionName][languageType]}</p>
       <button
-        className=" aspect-square h-5 focus:rounded-xl focus:outline-none focus:ring-1"
+        className="block h-5 w-5 focus:rounded-xl focus:outline-none focus:ring-1"
         onClick={onClick}
         tabIndex={tabIndex}
         role={optionName}

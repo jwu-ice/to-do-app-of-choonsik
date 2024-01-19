@@ -1,26 +1,13 @@
 import { RecoilRoot } from "recoil"
-import { MouseEvent, MouseEventHandler, useState } from "react"
-import Modal from "react-modal"
 import CHOONSIK_TITLE from "@/assets/choonsik-title.png"
 import TodoList from "@/components/TodoList"
 import TodoInput from "@/components/TodoInput"
 import OptionBox from "@/components/OptionBox"
-import OptionPage from "@/layout/OptionPage"
+import OptionList from "@/components/OptionList"
 
 const bgColor = `bg-[#52d3ff]`
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleClickOpenOption = () => {
-    setIsOpen(true)
-  }
-
-  const handleCloseOption = (e: MouseEvent) => {
-    e.stopPropagation()
-    setIsOpen(false)
-  }
-
   return (
     <RecoilRoot>
       <div
@@ -34,8 +21,8 @@ const App = () => {
               alt={CHOONSIK_TITLE}
             />
           </div>
-          <OptionBox handleClickOpenOption={handleClickOpenOption} />
-          <OptionPage isOpen={isOpen} handleCloseOption={handleCloseOption} />
+          <OptionBox />
+          <OptionList />
         </div>
         <TodoList />
         <TodoInput />
