@@ -8,45 +8,28 @@ export const TODO_LOADING_IMAGE = [
   "bg-choonsik-loading-2",
 ]
 
-export const SUPPORTED_LANGUAGES = ["ko", "en"]
+export const SelectLanguageOptions = [
+  { value: "ko", name: "한국어" },
+  { value: "en", name: "English" },
+] as const
 
-export const DELETE_CONFIRM_TEXT = {
-  confirm: {
-    ko: "정말 지우시겠습니까?",
-    en: "Are you really delete everything?",
-  },
-}
+// Supported Languages
+export type TypeLang = keyof typeof TEXT_LOCAL
+export type TypeText = keyof typeof TEXT_LOCAL[TypeLang]
 
-export const OPTION_TEXT = {
-  ko: "환경 설정",
-  en: "Preferences",
-} as const
-
-export const OPTION_LIST = {
-  DO_DELETE_ALL: {
-    ko: "할 일 리스트 전부 삭제",
-    en: "Delete all to do list",
-  },
-  CHANGE_BACKGROUND_COLOR: {
-    ko: "배경색상 변경",
-    en: "Change background color",
-  },
-  CHANGE_LANGUAGE: {
-    ko: "언어 변경",
-    en: "Change language",
-  },
-} as const
-
-export const OPTION_LIST222 = {
+export const TEXT_LOCAL = {
   ko: {
-    DO_DELETE_ALL: "할 일 리스트 전부 삭제",
-    CHANGE_BACKGROUND_COLOR: "할 일 리스트 전부 삭제",
-    CHANGE_LANGUAGE: "할 일 리스트 전부 삭제",
+    confirm_delete: "정말 지우겠습니까?",
+    option_preference: "환경 설정",
+    option_do_delete_all: "할 일 리스트 전부 삭제",
+    option_change_background_color: "배경화면 색 변경",
+    option_change_language: "언어 변경",
   },
-  en: {},
+  en: {
+    confirm_delete: "Are you really delete everything?",
+    option_preference: "Preferences",
+    option_do_delete_all: "Delete all to do list",
+    option_change_background_color: "Change background color",
+    option_change_language: "Change language",
+  },
 } as const
-
-// @type 모음
-// TODO 디렉토리 구분하기 const, type
-export type OPTION_LIST_TYPE = keyof typeof OPTION_LIST
-export type LANGUAGE_TYPE = keyof typeof OPTION_LIST[OPTION_LIST_TYPE]

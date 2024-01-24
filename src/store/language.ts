@@ -1,7 +1,7 @@
 import { atom } from "recoil"
-import { LANGUAGE_TYPE } from "@/constants"
+import { TypeLang } from "@/constants"
 
-export const atomLanguage = atom<LANGUAGE_TYPE>({
+export const atomLanguage = atom<TypeLang>({
   key: "atomLanguage",
   default: "ko",
 })

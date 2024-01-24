@@ -1,8 +1,6 @@
 import { useRecoilState } from "recoil"
 import { MouseEvent, memo, useCallback, useState } from "react"
-import { DELETE_CONFIRM_TEXT, LANGUAGE_TYPE, OPTION_TEXT } from "@/constants"
 import XButton from "@/components/Common/XButton"
-import { OPTION_LIST } from "@/constants"
 import { atomLanguage } from "@/store/language"
 import OptionItem from "@/components/OptionItem"
 import CheckButton from "@/components/Common/CheckButton"
@@ -11,16 +9,17 @@ import SelectOption from "@/components/OptionList/SelectOption"
 import Modal from "@/components/Common/Modal"
 import { atomOptionModal } from "@/store/optionModal"
 import { useDispatchTodoIds } from "@/hooks/useDispatchTodoIds"
+import { TEXT_LOCAL, TypeLang } from "@/constants"
 
 const OptionList = () => {
   const [isOpen, setIsOpen] = useRecoilState<boolean>(atomOptionModal)
   const [isOpenColorPicker, setIsOpenColorPicker] = useState(false)
   const [isOpenChangeLanguage, setIsOpenChangeLanguage] = useState(false)
-  const [language, setLanguage] = useRecoilState<LANGUAGE_TYPE>(atomLanguage)
+  const [language, setLanguage] = useRecoilState<TypeLang>(atomLanguage)
   const { dispatch } = useDispatchTodoIds()
 
   const handleClickAllDeleteTodoList = useCallback(() => {
-    const isDeleteAll = confirm(DELETE_CONFIRM_TEXT.confirm[language])
+    const isDeleteAll = confirm(TEXT_LOCAL[language].confirm_delete)
     if (isDeleteAll) {
       dispatch({ type: "DELETE_ALL" })
     }
@@ -32,29 +31,6 @@ const OptionList = () => {
       setIsOpen(false)
     },
     [setIsOpen],
-  )
-
-  const OptionList = Object.entries(OPTION_LIST).map(
-    ([optionName, lang], index) => {
-      const TargetComponent = {
-        DO_DELETE_ALL: <CheckButton onClick={handleClickAllDeleteTodoList} />,
-        CHANGE_BACKGROUND_COLOR: <ColorPicker />,
-        CHANGE_LANGUAGE: <SelectOption setLanguage={setLanguage} />,
-      }
-
-      return (
-        <OptionItem
-          targetComponent={TargetComponent[optionName]}
-          languageType={language}
-          onClick={() => {
-            "void"
-          }}
-          optionName={optionName}
-          key={index}
-          tabIndex={index}
-        />
-      )
-    },
   )
 
   return (
@@ -72,8 +48,39 @@ const OptionList = () => {
               }
             >
               <div className="h-full space-y-2">
-                <h2 className="mb-3 text-xl ">{OPTION_TEXT[language]}</h2>
-                {OptionList}
+                <h2 className="mb-3 text-xl ">
+                  {TEXT_LOCAL[language].option_preference}
+                </h2>
+                {
+                  <>
+                    <OptionItem
+                      onClick={handleClickAllDeleteTodoList}
+                      lang={language}
+                      text={"option_do_delete_all"}
+                      tabIndex={1}
+                      className={"h-4 w-4"}
+                    >
+                      <CheckButton />
+                    </OptionItem>
+                    <OptionItem
+                      onClick={() => ""}
+                      lang={language}
+                      text={"option_change_background_color"}
+                      tabIndex={2}
+                    >
+                      <ColorPicker />
+                    </OptionItem>
+
+                    <OptionItem
+                      onClick={() => ""}
+                      lang={language}
+                      text={"option_change_language"}
+                      tabIndex={3}
+                    >
+                      <SelectOption />
+                    </OptionItem>
+                  </>
+                }
                 <XButton
                   onClick={handleCloseOption}
                   className="absolute right-3 top-1 h-4 w-4"

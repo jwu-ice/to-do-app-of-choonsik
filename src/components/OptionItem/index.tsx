@@ -1,31 +1,43 @@
-import { MouseEventHandler, ReactNode } from "react"
-import { LANGUAGE_TYPE, OPTION_LIST, OPTION_LIST_TYPE } from "@/constants"
+import {
+  Attributes,
+  HTMLAttributes,
+  MouseEventHandler,
+  PropsWithChildren,
+  PropsWithRef,
+  PropsWithoutRef,
+  ReactNode,
+} from "react"
+import { TEXT_LOCAL, TypeLang, TypeText } from "@/constants"
 
 type PropsT = {
-  onClick: MouseEventHandler<HTMLButtonElement>
-  optionName: OPTION_LIST_TYPE
-  languageType: LANGUAGE_TYPE
-  tabIndex: number
-  targetComponent: ReactNode
+  lang: TypeLang
+  text: TypeText
+  tabIndex?: number
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  className?: string
+  children?: ReactNode
 }
 
 const OptionItem = ({
   onClick,
-  optionName,
-  languageType,
+  lang,
+  text,
   tabIndex,
-  targetComponent,
+  className,
+  children,
 }: PropsT) => {
   return (
     <div className="flex justify-between">
-      <p>{OPTION_LIST[optionName][languageType]}</p>
+      <p>{TEXT_LOCAL[lang][text]}</p>
       <button
-        className="block h-5 w-5 focus:rounded-xl focus:outline-none focus:ring-1"
+        className={
+          "focus:rounded-xl focus:outline-none focus:ring-1 " + className
+        }
         onClick={onClick}
         tabIndex={tabIndex}
-        role={optionName}
+        role={text}
       >
-        {targetComponent}
+        {children}
       </button>
     </div>
   )
