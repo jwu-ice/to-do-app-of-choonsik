@@ -1,4 +1,4 @@
-import { atomFamily, selectorFamily } from "recoil"
+import { atomFamily } from "recoil"
 import { todoJSONType } from "@/components/TodoList"
 
 const atomFamilyTodoEffect =
@@ -27,14 +27,4 @@ export const atomFamilyTodo = atomFamily<todoJSONType, number>({
     } as todoJSONType
   },
   effects: (id) => [atomFamilyTodoEffect("todo-", id)],
-})
-
-const selectorFamilyTodo = selectorFamily({
-  key: "selectorFamilyTodo",
-  get:
-    (id: number) =>
-    ({ get }) => {
-      const todo = get(atomFamilyTodo(id))
-      return
-    },
 })

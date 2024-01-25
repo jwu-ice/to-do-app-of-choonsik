@@ -1,4 +1,5 @@
 const TODO_KEY_LOCALSTORAGE = "todo"
+export const LANGUAGE_KEY_STORE = "language"
 
 // TODO_ITEMS_COUNT: 8,
 export const TODO_ITEM_KEY_LOCALSTORAGE = TODO_KEY_LOCALSTORAGE
@@ -19,6 +20,7 @@ export type TypeText = keyof typeof TEXT_LOCAL[TypeLang]
 
 export const TEXT_LOCAL = {
   ko: {
+    todoItem_placeholder: "할 일을 입력하라구",
     confirm_delete: "정말 지우겠습니까?",
     option_preference: "환경 설정",
     option_do_delete_all: "할 일 리스트 전부 삭제",
@@ -26,6 +28,7 @@ export const TEXT_LOCAL = {
     option_change_language: "언어 변경",
   },
   en: {
+    todoItem_placeholder: "Enter a to do ",
     confirm_delete: "Are you really delete everything?",
     option_preference: "Preferences",
     option_do_delete_all: "Delete all to do list",

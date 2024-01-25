@@ -1,11 +1,14 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react"
-import { useRecoilCallback } from "recoil"
+import { useRecoilCallback, useRecoilValue } from "recoil"
 import { useDispatchTodo } from "@/hooks/useDispatchTodo"
 import { useDispatchTodoIds } from "@/hooks/useDispatchTodoIds"
 import { atomTodoIds } from "@/store/todoIds"
+import { TEXT_LOCAL } from "@/constants"
+import { atomLanguage } from "@/store/language"
 
 const TodoInput = () => {
   const [text, setText] = useState<string>("")
+  const lang = useRecoilValue(atomLanguage)
   const { dispatch: dispatchTodoIds } = useDispatchTodoIds()
   const { dispatch: dispatchTodo } = useDispatchTodo()
 
@@ -40,7 +43,7 @@ const TodoInput = () => {
         type="text"
         size={14}
         maxLength={255}
-        placeholder="할 일을 입력하라구"
+        placeholder={TEXT_LOCAL[lang].todoItem_placeholder}
         onChange={handleChangeText}
         onKeyUp={handleCreateTodo}
         value={text}
