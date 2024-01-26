@@ -1,7 +1,7 @@
 const { repeatObject } = require("./src/utils/repeatObject")
 
 // BUG safelist not work about variant
-const height_px_0_100 = [...Array(101).keys()].flatMap((v) => [`h-[${v}px]`])
+// const height_px_0_100 = [...Array(101).keys()].flatMap((v) => [`h-[${v}px]`])
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

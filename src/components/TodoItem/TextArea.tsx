@@ -1,16 +1,16 @@
 import {
   ChangeEvent,
   KeyboardEvent,
-  MouseEvent,
   memo,
   useCallback,
   useEffect,
   useRef,
 } from "react"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilValue } from "recoil"
 import { useState } from "react"
 import { flushSync } from "react-dom"
-import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
+import { atomFamilyTodo } from "@/store/todo"
+import { useDispatchTodo } from "@/hooks/useDispatchTodo"
 
 const TextArea = ({ id }: { id: number }) => {
   const todo = useRecoilValue(atomFamilyTodo(id))

@@ -1,7 +1,8 @@
 import { memo, useMemo } from "react"
 import { useRecoilValue } from "recoil"
 import { betweenRandomNumber } from "@/utils/number"
-import { atomFamilyTodo, useDispatchTodo } from "@/store/todo"
+import { atomFamilyTodo } from "@/store/todo"
+import { useDispatchTodo } from "@/hooks/useDispatchTodo"
 
 const CheckBox = ({ id }: { id: number }) => {
   const { dispatch } = useDispatchTodo()

@@ -1,4 +1,4 @@
-import { TODO_LOADING_IMAGE } from "@/settings"
+import { TODO_LOADING_IMAGE } from "@/constants"
 
 const Loading = () => {
   const randomLoadingNumber = Math.floor(
@@ -13,8 +13,7 @@ const Loading = () => {
         />
       ) : (
         <div className="mt-2 text-center text-xl">
-          <p>할 일을 입력하자!</p>
-          <p>혹시 한 개도 없는거야?</p>
+          <p>Nothing To do!</p>
         </div>
       )}
     </div>
