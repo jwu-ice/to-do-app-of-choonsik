@@ -4,8 +4,8 @@ import XButton from "@/components/Common/XButton"
 import { atomLanguage } from "@/store/language"
 import OptionItem from "@/components/OptionItem"
 import CheckButton from "@/components/Common/CheckButton"
-import ColorPicker from "@/components/OptionList/ColorPicker"
-import SelectOption from "@/components/OptionList/SelectOption"
+import ColorPicker from "@/components/OptionItem/ColorPicker"
+import SelectOption from "@/components/OptionItem/SelectOption"
 import Modal from "@/components/Common/Modal"
 import { atomOptionModal } from "@/store/optionModal"
 import { useDispatchTodoIds } from "@/hooks/useDispatchTodoIds"
@@ -44,7 +44,7 @@ const OptionList = () => {
             <div
               onClick={(e) => e.stopPropagation()}
               className={
-                "absolute top-1/3 left-1/2 z-20 h-auto w-80 -translate-x-1/2 -translate-y-1/3 rounded-lg bg-white p-5 shadow-xl"
+                "absolute top-14 left-1/2 z-20 h-auto w-80 -translate-x-1/2 rounded-lg bg-white p-5 shadow-xl"
               }
             >
               <div className="h-full space-y-2">

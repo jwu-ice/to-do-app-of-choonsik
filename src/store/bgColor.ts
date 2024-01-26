@@ -1,13 +1,8 @@
 import { atom } from "recoil"
-import {
-  DEFAULT_LANGUAGE,
-  LANGUAGE_KEY_STORE,
-  SelectLanguageOptions,
-  TypeLang,
-} from "@/constants"
+import { BG_COLOR_KEY_STORE, DEFAULT_BGCOLOR } from "@/constants"
 import LocalStore from "@/utils/localStore"
 
-const atomLanguageEffect =
+const atomBgColorEffect =
   (key: string) =>
   ({ setSelf, onSet }: any) => {
     const savedValue = LocalStore.get(key)
@@ -21,8 +16,10 @@ const atomLanguageEffect =
     })
   }
 
-export const atomLanguage = atom<TypeLang>({
-  key: "atomLanguage",
-  default: LocalStore.get(LANGUAGE_KEY_STORE) ?? DEFAULT_LANGUAGE,
-  effects: [atomLanguageEffect(LANGUAGE_KEY_STORE)],
+export type HexType = string
+
+export const atomBgColor = atom<HexType>({
+  key: "atomBgColor",
+  default: LocalStore.get(BG_COLOR_KEY_STORE) ?? DEFAULT_BGCOLOR,
+  effects: [atomBgColorEffect(BG_COLOR_KEY_STORE)],
 })

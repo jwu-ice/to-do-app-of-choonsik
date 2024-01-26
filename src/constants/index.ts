@@ -1,5 +1,6 @@
 const TODO_KEY_LOCALSTORAGE = "todo"
 export const LANGUAGE_KEY_STORE = "language"
+export const BG_COLOR_KEY_STORE = "bg-color"
 
 // TODO_ITEMS_COUNT: 8,
 export const TODO_ITEM_KEY_LOCALSTORAGE = TODO_KEY_LOCALSTORAGE
@@ -8,6 +9,9 @@ export const TODO_LOADING_IMAGE = [
   "bg-choonsik-loading-1",
   "bg-choonsik-loading-2",
 ]
+
+export const DEFAULT_BGCOLOR = "#52d3ff"
+export const DEFAULT_LANGUAGE = "ko"
 
 export const SelectLanguageOptions = [
   { value: "ko", name: "한국어" },
