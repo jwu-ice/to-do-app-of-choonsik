@@ -32,7 +32,7 @@ const ColorPicker = () => {
       {isModal && (
         <section
           ref={ref}
-          className="top-[calc(100% + 10px)] react__colorful-small absolute"
+          className="top-[calc(100% + 10px)] react__colorful-small absolute right-0"
         >
           <HexColorPicker onChange={setBgColor} color={bgColor} />
         </section>
