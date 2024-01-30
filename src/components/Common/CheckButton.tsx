@@ -9,7 +9,7 @@ const CheckButton = ({ className, onClick }: PropsT) => {
   return (
     <div
       onClick={onClick}
-      className={`h-full w-full cursor-pointer bg-checkbox-1 bg-cover hover:opacity-70 ${className}`}
+      className={`bg-checkbox-1 h-full w-full cursor-pointer bg-cover hover:opacity-70 ${className}`}
     ></div>
   )
 }

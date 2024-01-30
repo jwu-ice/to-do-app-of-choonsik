@@ -16,9 +16,9 @@ const ColorPicker = () => {
     toggleModal(false)
   }
 
-  const handleThrottleSetColor = () => {
-    console.log("bgColor", bgColor)
-  }
+  // const handleThrottleSetColor = () => {
+  //   console.log("bgColor", bgColor)
+  // }
 
   const ref = useClickAway(handleCloseModal)
 

@@ -37,7 +37,7 @@ const TodoInput = () => {
   )
 
   return (
-    <div className="mb-6 h-20 bg-choonsik-input bg-contain bg-center bg-no-repeat">
+    <div className="bg-choonsik-input mb-6 h-20 bg-contain bg-center bg-no-repeat">
       <input
         className="overflow-hidden bg-transparent pl-24 pt-3 text-lg placeholder:text-base placeholder:text-slate-500 focus:outline-none"
         type="text"
