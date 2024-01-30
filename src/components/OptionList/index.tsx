@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from "recoil"
-import { MouseEvent, memo, useCallback, useState } from "react"
+import { MouseEvent, useCallback } from "react"
 import XButton from "@/components/Common/XButton"
 import { atomLanguage } from "@/store/language"
 import OptionItem from "@/components/OptionItem"
@@ -13,7 +13,6 @@ import { TEXT_LOCAL, TypeLang } from "@/constants"
 
 const OptionList = () => {
   const [isOpen, setIsOpen] = useRecoilState<boolean>(atomOptionModal)
-  const [isOpenColorPicker, setIsOpenColorPicker] = useState(false)
   const language = useRecoilValue<TypeLang>(atomLanguage)
   const { dispatch } = useDispatchTodoIds()
 

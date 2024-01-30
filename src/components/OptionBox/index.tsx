@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 import 세팅상자 from "@/assets/settingBox.png"
 import { atomOptionModal } from "@/store/optionModal"
 
