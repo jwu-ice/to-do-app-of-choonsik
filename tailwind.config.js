@@ -1,7 +1,19 @@
-const { repeatObject } = require("./src/utils/repeatObject")
+const repeatObject = ({
+  className,
+  imageName,
+  repeat = 1,
+  path = "assets/",
+  extension = "png",
+}) => {
+  const object = [...Array(repeat)].reduce((prev, _, i) => {
+    prev[`${className}${i + 1}`] = `url(${path}${imageName}${
+      i + 1
+    }.${extension})`
+    return prev
+  }, {})
 
-// BUG safelist not work about variant
-// const height_px_0_100 = [...Array(101).keys()].flatMap((v) => [`h-[${v}px]`])
+  return object
+}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

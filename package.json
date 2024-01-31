@@ -1,7 +1,6 @@
 {
   "name": "todo-with-choonsik",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "start": "concurrently \"npm run start:css\" \"craco start\"",
     "start:css": "tailwindcss -o src/style-build.css --watch",

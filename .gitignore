@@ -25,4 +25,5 @@ yarn-error.log*
 
 # add more
 src/style-build.css
-
+.gitattributes
+build.*
